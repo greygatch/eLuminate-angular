@@ -1,5 +1,12 @@
 h3 WORLD MAP + NEWS
 
 .row
-  .col-xs-12
+  .col-xs-7
     #mapDiv
+  .col-xs-4
+    table.tabled-striped.table
+      thead
+        tr
+      tbody
+        tr(ng-repeat='article in articles')
+          td {{article.title}}

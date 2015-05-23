@@ -14,8 +14,6 @@ angular.module('poseidon')
         return data.twitter.username;
       case 'google':
         return data.google.displayName;
-      case 'facebook':
-        return data.facebook.displayName;
       case 'github':
         return data.github.displayName;
     }
