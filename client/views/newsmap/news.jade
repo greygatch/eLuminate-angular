@@ -1,12 +1,10 @@
-h3 WORLD MAP + NEWS
-
 .row
   .col-xs-7
     #mapDiv
   .col-xs-4
-    table.tabled-striped.table
-      thead
-        tr
-      tbody
-        tr(ng-repeat='article in articles')
-          td {{article.title}}
+    ul(ng-repeat='article in articles')
+      li: a(target='_blank' ng-click='isRead($event)' ng-href='{{article.url}}') {{article.title}}
+      li {{article.abstract}}
+      img.previewImg(ng-src='{{article.multimedia ? article.multimedia[0].url : null}}')
+      li ___
+      
