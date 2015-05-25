@@ -13,6 +13,14 @@ angular.module('poseidon')
     return $rootScope.afAuth.$authWithOAuthPopup(provider);
   };
 
+  User.find = function(){
+    return $http.get(nodeUrl + '/users/' + $rootScope.activeUser.uid);
+  };
+
+  User.update = function(user){
+    return $http.put(nodeUrl + '/users/' + user._id + '/edit', user);
+  };
+
   User.register = function(user){
     return $rootScope.afAuth.$createUser(user);
   };

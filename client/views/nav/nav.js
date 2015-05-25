@@ -2,9 +2,6 @@
 
 angular.module('poseidon')
 .controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, User){
-
-  $rootScope.points = 0;
-
   function goHome(){
     $state.go('home');
   }
@@ -30,6 +27,10 @@ angular.module('poseidon')
       User.initialize().then(function(response){
         $rootScope.activeUser.mongoId = response.data;
         goHome();
+      });
+      User.find($rootScope.activeUser.firebaseId)
+      .then(function(result){
+        $rootScope.points = result.data.points;
       });
     }else{
       $rootScope.activeUser = null;
