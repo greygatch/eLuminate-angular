@@ -2,6 +2,9 @@
 
 angular.module('poseidon')
 .controller('NavCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, User){
+
+  $rootScope.points = 0;
+
   function goHome(){
     $state.go('home');
   }
