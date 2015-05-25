@@ -1,0 +1,15 @@
+.col-xs-4.col-xs-offset-1
+  br
+  form
+    .form-group
+      label Update User Profile
+      input.form-control(type='text' placeholder='username' ng-model='profile.username')
+      br
+      input.form-control(type='text' placeholder='avatar URL' ng-model='profile.avatar')
+      br
+      button.btn.btn-default(ng-click='updateProfile(profile)') Update Profile
+.col-xs-4.col-xs-offset-1
+  img.profileImg(ng-src='{{user.avatar}}')
+  h3 {{user.username ? user.username : user.firebaseId | uppercase}}
+  h3 {{user.points}} points
+  h3 Joined: {{user.createdAt | date: med}}

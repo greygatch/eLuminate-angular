@@ -53,7 +53,6 @@ angular.module('poseidon')
   });
 
   $scope.isRead = function(event){
-    console.log(event);
     var roll = Math.floor(Math.random() * 25) + 75;
     $rootScope.points += roll;
     $scope.newPoints += roll;
