@@ -11,3 +11,7 @@ h3 FORUM
         textarea.form-control(rows='10', placeholder='Enter content', ng-model='post.body')
         br
         button.btn.btn-primary.btn-lg(ng-click='createPost(post)') Submit Post
+    ul.jumbotron(ng-repeat='post in posts | orderBy: "-createdAt"')
+      li {{post.title | uppercase}}
+      li {{post.body}}
+      li {{post.votes}}
