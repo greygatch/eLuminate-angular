@@ -14,6 +14,6 @@ angular.module('poseidon')
     User.update($scope.user)
     .then(function(response){
       $scope.user = response.data;
-    })
+    });
   };
 });

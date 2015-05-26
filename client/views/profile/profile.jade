@@ -13,5 +13,5 @@
   .col-xs-4.col-xs-offset-4
     img.profileImg(ng-src='{{user.avatar}}')
     h3 {{user.username ? user.username : user.firebaseId}}
-    h3 Points: {{user.points}}
+    h3.score Points: {{user.points}}
     h3 Joined: {{user.createdAt | date: med}}
