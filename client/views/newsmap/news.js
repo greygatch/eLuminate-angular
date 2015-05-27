@@ -57,7 +57,7 @@ angular.module('poseidon')
     var roll = Math.floor(Math.random() * 25) + 75;
     $rootScope.points += roll;
     $scope.newPoints += roll;
-    if ($rootScope.points > 200){
+    if($rootScope.points > 200){
       $window.swal({title: 'Woot', text: 'You get a new badge', type: 'success'});
     }
     user.points = $rootScope.points;

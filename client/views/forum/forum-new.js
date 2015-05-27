@@ -1,9 +1,11 @@
+'use strict';
+
 angular.module('poseidon')
 .controller('ForumNewCtrl', function($rootScope, $window, $scope, $state, $firebaseObject, $http, User, Post){
   $scope.createPost = function(post){
     post.id = $rootScope.activeUser.uid;
     Post.create(post)
-    .then(function(response){
+    .then(function(){
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
       Post.find()
       .then(function(response){
@@ -11,6 +13,6 @@ angular.module('poseidon')
       });
     });
     $scope.post = {};
-    $state.go('forum.list')
+    $state.go('forum.list');
   };
 });
