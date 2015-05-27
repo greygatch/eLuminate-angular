@@ -1,8 +1,12 @@
 .row
   .col-xs-4.col-xs-offset-4
-    button.btn.btn-default(ui-sref='forum.new') New Post
+    h3 Welcome to the eLuminate Forum
+    h4 Please be respectful to others.
+    br
     table.table.table-striped
       tbody
         tr(ng-repeat='post in posts | orderBy: "-createdAt"')
           td: i.fa.fa-thumbs-o-up &nbsp; {{post.votes}}
-          td: a.forum-title(ui-sref='forum.show') {{post.title}}
+          td: a.forum-title(ui-sref='forum.show({postId: post._id})') {{post.title}}
+    br
+    button.btn.btn-default(ui-sref='forum.new') New Post

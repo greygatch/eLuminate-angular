@@ -11,11 +11,6 @@ angular.module('poseidon')
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
 
-  // .state('forum', {url: '/forum', templateUrl: '/views/forum/forum.html',  controller: 'ForumCtrl'})
-  // .state('forum', {url: '/forum', templateUrl: '/views/forum/forum.html',  controller: 'ForumCtrl'})
-  // .state('forum', {url: '/forum', templateUrl: '/views/forum/forum.html',  controller: 'ForumCtrl'})
-
-
   .state('forum', {url: '/forum', templateUrl: '/views/forum/forum.html', abstract: true})
   .state('forum.new', {url: '/new', templateUrl: '/views/forum/forum-new.html', controller: 'ForumNewCtrl'})
   .state('forum.list', {url: '/', templateUrl: '/views/forum/forum-list.html', controller: 'ForumListCtrl'})

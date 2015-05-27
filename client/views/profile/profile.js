@@ -27,6 +27,7 @@ angular.module('poseidon')
     User.update($scope.user)
     .then(function(response){
       $scope.user = response.data;
+      $window.swal({title: 'Success!', text: 'Your profile has been updated!', type: 'success'});
     });
   };
   $scope.editPost = function(post){
