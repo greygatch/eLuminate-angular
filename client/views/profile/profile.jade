@@ -1,5 +1,11 @@
 .row
-  .col-xs-2.col-xs-offset-5
+  .col-xs-2.col-xs-offset-4
+    img.profileImg(ng-src='{{user.avatar}}')
+    h3 {{user.username ? user.username : user.firebaseId}}
+    h3.nav-score Joined: {{user.createdAt | date: med}}
+    h3.nav-score Points: {{user.points}}
+    h3.nav-score Badges: 0
+  .col-xs-2
     br
     form
       .form-group
@@ -10,9 +16,11 @@
         br
         button.btn.btn-default(ng-click='updateProfile(profile)') Update Profile
 .row
-  .col-xs-4.col-xs-offset-4
-    img.profileImg(ng-src='{{user.avatar}}')
-    h3 {{user.username ? user.username : user.firebaseId}}
-    h3.nav-score Points: {{user.points}}
-    h3.nav-score Badges: 0
-    h3.nav-score Joined: {{user.createdAt | date: med}}
+  .col-xs-6.col-xs-offset-3
+    table.table.table-striped
+      tbody
+        tr(ng-repeat='post in posts | orderBy: "-createdAt"')
+          td: i.fa.fa-thumbs-o-up &nbsp; {{post.votes}}
+          td {{post.title}}
+          td: button.btn.btn-warning.btn-xs(ng-click='editPost(post)') Edit
+          td: button.btn.btn-danger.btn-xs(ng-click='deletePost(post)') X

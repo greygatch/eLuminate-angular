@@ -1,0 +1,11 @@
+row
+  .col-xs-4.col-xs-offset-4
+    form
+      .form-group
+        label Title
+        input.form-control(type='text', placeholder='Enter a title', ng-model='post.title')
+        br
+        label Post Body
+        textarea.form-control(rows='10', placeholder='Enter content', ng-model='post.body')
+        br
+        button.btn.btn-primary.btn-lg(ng-click='createPost(post)') Submit Post
