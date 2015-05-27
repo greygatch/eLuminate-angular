@@ -1,15 +1,17 @@
 .row
   .col-xs-2.col-xs-offset-4
     img.profileImg(ng-src='{{user.avatar}}')
-    h3 {{user.username ? user.username : user.firebaseId}}
-    h3.nav-score Joined: {{user.createdAt | date: med}}
-    h3.nav-score Points: {{user.points}}
-    h3.nav-score Badges: 0
+    h4 {{user.username ? user.username : user.firebaseId}}
+    h4.nav-score Joined: {{user.createdAt | date: med}}
+    h4.nav-score Points: {{user.points}}
+    h4.nav-score Badges: 0
   .col-xs-2
     br
     form
+      br
       .form-group
         label Update User Profile
+        br
         input.form-control(type='text' placeholder='username' ng-model='profile.username')
         br
         input.form-control(type='text' placeholder='avatar URL' ng-model='profile.avatar')

@@ -31,9 +31,22 @@ angular.module('poseidon')
     });
   };
   $scope.editPost = function(post){
-    console.log(post);
+    Post.edit(post)
+    .then(function(response){
+      console.log(response);
+    });
   };
   $scope.deletePost = function(post){
-    console.log(post);
+    Post.destroy(post)
+    .then(function(response){
+      Post.find()
+      .then(function(response3){
+        posts = response3.data;
+        posts = posts.filter(function(e){
+          return e.userId === UID;
+        });
+        $scope.posts = posts;
+      });
+    });
   };
 });
