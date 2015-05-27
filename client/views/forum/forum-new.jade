@@ -8,4 +8,6 @@
         label Post Body
         textarea.form-control(rows='10', placeholder='Enter content', ng-model='post.body')
         br
-        button.btn.btn-primary.btn-lg(ng-click='createPost(post)') Submit Post
+        button.btn.btn-primary.btn-lg(ng-if='!isEdit' ng-click='createPost(post)') Submit Post
+        button.btn.btn-warning.btn-lg(ng-if='isEdit' ng-click='editPost(post)') Edit Post
+        

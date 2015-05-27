@@ -31,10 +31,7 @@ angular.module('poseidon')
     });
   };
   $scope.editPost = function(post){
-    Post.edit(post)
-    .then(function(response){
-      console.log(response);
-    });
+    $state.go('forum.edit', {postId: post._id});
   };
   $scope.deletePost = function(post){
     Post.destroy(post)
