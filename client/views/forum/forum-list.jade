@@ -8,5 +8,5 @@
     table.table.table-striped
       tbody
         tr(ng-repeat='post in posts | orderBy: "-createdAt"')
-          td: i.fa.fa-thumbs-o-up &nbsp; {{post.votes}}
+          td: i.thumb.fa.fa-thumbs-o-up(ng-click='upvote(post)') &nbsp; {{post.votes}}
           td: a.forum-title(ui-sref='forum.show({postId: post._id})') {{post.title}}

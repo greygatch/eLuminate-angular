@@ -1,13 +1,12 @@
 .row
   .col-xs-8.col-md-8
-    #mapDiv    
+    #mapDiv.responsive    
   .col-xs-3.col-md-3.carousel
     h3 Current Score:
     h4.score {{newPoints}}
-    i.navArrow.fa.fa-chevron-left.fa-5x.gallery(ng-click='move("prev")')
-    i.navArrow.fa.fa-chevron-right.fa-5x.gallery(ng-click='move("next")')
     br
-    img.previewImg(ng-show='isImage' ng-src='{{article.multimedia[0].url}}')
+    img.previewImg(ng-show='isImage' ng-src='{{article.multimedia[0].url ? article.multimedia[4].url : dummyUrl}}')
     h3: a.link(target='_blank' ng-mousedown='isRead($event)' ng-href='{{article.url}}') {{article.title}}
     h5 {{article.abstract}}
-      
+    i.navArrow.fa.fa-chevron-left.fa-5x.gallery(ng-click='move("prev")')
+    i.navArrow.fa.fa-chevron-right.fa-5x.gallery(ng-click='move("next")')

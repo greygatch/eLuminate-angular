@@ -8,6 +8,7 @@ angular.module('poseidon')
   $scope.isRead = true;
   $scope.isImage = true;
   $scope.newPoints = 0;
+  $scope.dummyUrl = 'https://shafr.org/sites/default/files/field/image/T_logo.gif';
 
   function clearMarkers(){
     markers.forEach(function(m){
@@ -24,7 +25,7 @@ angular.module('poseidon')
     user = response.data;
   });
 
-  Map.geocode('london', function(){
+  Map.geocode('rome', function(){
     var map = Map.create('#mapDiv', 25, 0, 2);
     $window.jQuery.getJSON('http://api.nytimes.com/svc/topstories/v1/home.json?api-key=d9aaa709a92d3d4ad4efbd1902a469ac:19:72139126', function(response){
       var articles = response.results.filter(function(e){
@@ -32,6 +33,12 @@ angular.module('poseidon')
       });
       var locations = [];
       articles.forEach(function(e){
+        console.log('e', e.multimedia);
+        if(!e.multimedia){
+          e.multimedia = [];
+          e.multimedia[0] = {};
+          e.multimedia[0].url = $scope.dummyUrl;
+        }
         locations.push(e.geo_facet[0] ? e.geo_facet[0] : e.subsection);
       });
       locations.forEach(function(l){
@@ -39,7 +46,6 @@ angular.module('poseidon')
         var lng;
         Map.geocode(l, function(result){
           if(!result){ return; }
-
           lat = result[0].geometry.location.A;
           lng = result[0].geometry.location.F;
           Map.addMarker(map, lat, lng, '!', '/assets/marker.png');

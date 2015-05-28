@@ -2,13 +2,13 @@
 
 angular.module('poseidon')
 .controller('ForumNewCtrl', function($rootScope, $window, $scope, $state, $firebaseObject, $http, User, Post){
+  var user;
   $scope.isEdit = false;
 
   if($state.params.postId){
     $scope.isEdit = true;
     Post.findOne($state.params.postId)
     .then(function(response){
-      // console.log('!!!!!!', response);
       $scope.post = response.data;
     })
   }
@@ -19,6 +19,8 @@ angular.module('poseidon')
     .then(function(){
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
     });
+    postingPoints();
+
     $scope.post = {};
     $state.go('forum.list');
   };
@@ -28,8 +30,29 @@ angular.module('poseidon')
     .then(function(response){
       console.log(response.data);
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
+      Post.find()
+      .then(function(response){
+        $scope.posts = response.data;
+        $scope.post = {};
+        $state.go('forum.list');
+      });
     });
-    $scope.post = {};
-    $state.go('forum.list');
   };
+
+  function postingPoints(){
+    User.find()
+    .then(function(response){
+      $rootScope.points = response.data.points;
+      user = response.data;
+      var roll = Math.floor(Math.random() * 25) + 25;
+      $rootScope.points += roll;
+      $scope.newPoints += roll;
+      user.points = $rootScope.points;
+      delete user.__v;
+      User.update(user)
+      .then(function(response){
+        console.log('successful save: ', response);
+      });
+    });
+  }
 });

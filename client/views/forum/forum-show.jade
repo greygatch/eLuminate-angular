@@ -1,6 +1,11 @@
-h1 Post Details
-
-h2 {{post.title}}
-h5 Votes: {{post.votes}}
-
-h4 {{post.body}}
+.row
+  .col-xs-6.col-xs-offset-3
+    h3 {{post.title}}
+    h4 {{post.body}}
+    h6 Votes: {{post.votes}}
+    h6 Comments: {{post.comments.length}}
+.row
+  .col-xs-2.col-xs-offset-5
+    textarea.form-control(rows='5' ng-model='comment')
+    br
+    button.btn.btn-warning(ng-click='addComment(comment)') Add Comment

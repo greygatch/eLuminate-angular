@@ -6,4 +6,8 @@ angular.module('poseidon')
   .then(function(response){
     $scope.post = response.data;
   });
+
+  $scope.addComment = function(commment){
+    console.log(comment);
+  };
 });
