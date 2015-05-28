@@ -12,3 +12,4 @@
           td: i.thumb.fa.fa-thumbs-o-up(ng-click='upvote(post)') &nbsp; {{post.votes}}
           td: a.forum-title(ui-sref='forum.show({postId: post._id})') {{post.title}}
           td Replies: {{post.comments.length}}
+          td {{post.createdAt | date: sm}}

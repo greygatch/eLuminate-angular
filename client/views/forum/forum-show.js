@@ -23,8 +23,6 @@ angular.module('poseidon')
   };
   $scope.upvote = function(comment, post){
     comment.votes += 1;
-    console.log(comment);
-    console.log(post);
     Post.edit(post)
     .then(function(response){
       Post.find()

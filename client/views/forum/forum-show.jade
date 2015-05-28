@@ -14,9 +14,9 @@ br
 br
 .row
   .col-xs-4.col-xs-offset-4
-    table.table
+    table.table.table-bordered.table-hover
       thead
-        tr(ng-repeat='comment in post.comments')
+        tr.comment(ng-repeat='comment in post.comments')
           td {{comment.body}}
           td: i.thumb.fa.fa-thumbs-o-up(ng-click='upvote(comment, post)') {{comment.votes}}
 br
