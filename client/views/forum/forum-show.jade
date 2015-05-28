@@ -18,7 +18,7 @@ br
       thead
         tr(ng-repeat='comment in post.comments')
           td {{comment.body}}
-          td: i.thumb.fa.fa-thumbs-o-up {{comment.votes}}
+          td: i.thumb.fa.fa-thumbs-o-up(ng-click='upvote(comment, post)') {{comment.votes}}
 br
 .row
   .col-xs-2.col-xs-offset-5

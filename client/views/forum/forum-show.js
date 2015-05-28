@@ -21,21 +21,32 @@ angular.module('poseidon')
       commentPoints();
     })
   };
+  $scope.upvote = function(comment, post){
+    comment.votes += 1;
+    console.log(comment);
+    console.log(post);
+    Post.edit(post)
+    .then(function(response){
+      Post.find()
+      .then(function(response){
+        $scope.posts = response.data;
+      });
+    });
+  };
+  function commentPoints(){
+    User.find()
+    .then(function(response){
+      $rootScope.points = response.data.points;
+      var user = response.data;
+      var roll = Math.floor(Math.random() * 25) + 25;
+      $rootScope.points += roll;
+      $scope.newPoints += roll;
+      user.points = $rootScope.points;
+      delete user.__v;
+      User.update(user)
+      .then(function(response){
+        console.log('successful save: ', response);
+      });
+    });
+  }
 });
-
-function commentPoints(){
-  // User.find()
-  // .then(function(response){
-  //   $rootScope.points = response.data.points;
-  //   var user = response.data;
-  //   var roll = Math.floor(Math.random() * 25) + 25;
-  //   $rootScope.points += roll;
-  //   $scope.newPoints += roll;
-  //   user.points = $rootScope.points;
-  //   delete user.__v;
-  //   User.update(user)
-  //   .then(function(response){
-  //     console.log('successful save: ', response);
-  //   });
-  // });
-}

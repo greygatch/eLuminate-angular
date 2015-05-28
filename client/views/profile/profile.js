@@ -9,7 +9,6 @@ angular.module('poseidon')
   .then(function(response){
     $scope.user = response.data;
     UID = response.data._id;
-    console.log(UID);
     Post.find()
     .then(function(response2){
       posts = response2.data;
