@@ -4,8 +4,9 @@
     h4 {{post.body}}
     h6 Votes: {{post.votes}}
     h6 Comments: {{post.comments.length}}
+
 .row
   .col-xs-2.col-xs-offset-5
-    textarea.form-control(rows='5' ng-model='comment')
+    textarea.form-control(rows='5' ng-model='body')
     br
-    button.btn.btn-warning(ng-click='addComment(comment)') Add Comment
+    button.btn.btn-warning(ng-click='addComment(body)') Add Comment
