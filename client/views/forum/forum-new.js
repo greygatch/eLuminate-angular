@@ -25,10 +25,8 @@ angular.module('poseidon')
     $state.go('forum.list');
   };
   $scope.editPost = function(post){
-    console.log(post);
     Post.edit(post)
     .then(function(response){
-      console.log(response.data);
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
       Post.find()
       .then(function(response){

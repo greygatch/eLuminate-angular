@@ -33,7 +33,6 @@ angular.module('poseidon')
       });
       var locations = [];
       articles.forEach(function(e){
-        console.log('e', e.multimedia);
         if(!e.multimedia){
           e.multimedia = [];
           e.multimedia[0] = {};
@@ -67,7 +66,6 @@ angular.module('poseidon')
     delete user.__v;
     User.update(user)
     .then(function(response){
-      console.log('successful save: ', response);
     });
   };
 

@@ -1,10 +1,25 @@
 .row
-  .col-xs-6.col-xs-offset-3
+  .col-xs-2.col-xs-offset-5
+    buton.btn(ui-sref='forum.list') Back to Forum
+br
+.row
+  .col-xs-2.col-xs-offset-5
     h3 {{post.title}}
-    h4 {{post.body}}
     h6 Votes: {{post.votes}}
     h6 Comments: {{post.comments.length}}
-
+br
+.row
+  .col-xs-4.col-xs-offset-4.post-body
+    p {{post.body}}
+br
+.row
+  .col-xs-4.col-xs-offset-4
+    table.table
+      thead
+        tr(ng-repeat='comment in post.comments')
+          td {{comment.body}}
+          td: i.thumb.fa.fa-thumbs-o-up {{comment.votes}}
+br
 .row
   .col-xs-2.col-xs-offset-5
     textarea.form-control(rows='5' ng-model='body')

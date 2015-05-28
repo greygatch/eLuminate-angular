@@ -28,6 +28,7 @@ angular.module('poseidon')
       title: name,
       animation: $window.google.maps.Animation.DROP,
       icon: icon
+      // add shit for the things with the map marker/article switch
     });
     return marker;
   };
