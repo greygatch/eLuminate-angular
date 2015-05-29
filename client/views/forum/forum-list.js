@@ -40,12 +40,9 @@ angular.module('poseidon')
     Post.destroy(post)
     .then(function(response){
       Post.find()
-      .then(function(response3){
-        posts = response3.data;
-        posts = posts.filter(function(e){
-          return e.userId === UID;
-        });
-        $scope.posts = posts;
+      .then(function(response){
+        $scope.posts = response.data;
+        console.log($scope.posts);
       });
     });
   };
