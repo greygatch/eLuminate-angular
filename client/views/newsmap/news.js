@@ -4,7 +4,7 @@ angular.module('poseidon')
 .controller('NewsCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map, User){
   var markers = [];
   var user;
-  $scope.i = 0;
+  $rootScope.i = 0;
   $scope.isRead = true;
   $scope.isImage = true;
   $scope.newPoints = 0;
@@ -31,6 +31,7 @@ angular.module('poseidon')
       var articles = response.results.filter(function(e){
         return e.geo_facet || e.subsection ? e : null;
       });
+      console.log('!!!!!!articles', articles)
       var locations = [];
       articles.forEach(function(e){
         if(!e.multimedia){
@@ -40,6 +41,7 @@ angular.module('poseidon')
         }
         locations.push(e.geo_facet[0] ? e.geo_facet[0] : e.subsection);
       });
+      var index;
       locations.forEach(function(l){
         var lat;
         var lng;
@@ -47,13 +49,13 @@ angular.module('poseidon')
           if(!result){ return; }
           lat = result[0].geometry.location.A;
           lng = result[0].geometry.location.F;
-          Map.addMarker(map, lat, lng, '!', '/assets/marker.png');
+          Map.addMarker(map, lat, lng, l, '/assets/marker.png');
         });
       });
 
       $scope.$apply(function(){
-        $scope.articles = articles;
-        $scope.article = $scope.articles[0];
+        $rootScope.articles = articles;
+        $rootScope.article = $rootScope.articles[0];
       });
     });
   });
@@ -70,12 +72,12 @@ angular.module('poseidon')
   };
 
   $scope.move = function(direction){
-    if(direction === 'next' && $scope.i < $scope.articles.length - 1){
-      $scope.i += 1;
-    }else if(direction === 'prev' && $scope.i > 0){
-      $scope.i -= 1;
+    if(direction === 'next' && $rootScope.i < $scope.articles.length - 1){
+      $rootScope.i += 1;
+    }else if(direction === 'prev' && $rootScope.i > 0){
+      $rootScope.i -= 1;
     }
-    $scope.article = $scope.articles[$scope.i];
+    $scope.article = $scope.articles[$rootScope.i];
     if(!($scope.article.multimedia[0])){
       $scope.isImage = false;
     }else{
