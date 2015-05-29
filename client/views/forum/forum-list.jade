@@ -13,3 +13,5 @@
           td: a.forum-title(ui-sref='forum.show({postId: post._id})') {{post.title}}
           td Replies: {{post.comments.length}}
           td {{post.createdAt | date: sm}}
+          td: button.btn.btn-xs.btn-warning(ng-if='isUserPost(post)') Edit
+          td: button.btn.btn-xs.btn-danger(ng-if='isUserPost(post)') Delete
