@@ -18,6 +18,9 @@ angular.module('poseidon')
     Post.create(post)
     .then(function(){
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
+    })
+    .catch(function(){
+      $window.swal({title: 'Error!', text: 'Either your title or body was too short.', type: 'error'});
     });
     postingPoints();
 

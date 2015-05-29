@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('poseidon')
-.controller('ForumShowCtrl', function($rootScope, $scope, $state, $firebaseObject, $http, Post, User){
+.controller('ForumShowCtrl', function($rootScope, $scope, $state, $window, $http, Post, User){
 
   Post.findOne($state.params.postId)
   .then(function(response){
@@ -19,7 +19,9 @@ angular.module('poseidon')
     .then(function(response){
       $scope.post = response.data;
       commentPoints();
-    })
+      $scope.body = null;
+      $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
+    });
   };
   $scope.upvote = function(comment, post){
     comment.votes += 1;
