@@ -38,7 +38,6 @@ angular.module('poseidon')
             $rootScope.article = e;
             $rootScope.i = index;
           });
-          console.log('woot', $rootScope.article);
         }
         index++;
       })

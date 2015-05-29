@@ -62,6 +62,10 @@ angular.module('poseidon')
     });
   });
 
+  $rootScope.$watch('article', function(n){
+    $scope.article = n;
+  });
+
   $scope.isRead = function(event){
     var roll = Math.floor(Math.random() * 25) + 75;
     $rootScope.points += roll;
