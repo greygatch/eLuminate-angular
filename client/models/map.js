@@ -20,7 +20,6 @@ angular.module('poseidon')
     var map = new $window.google.maps.Map(selector, options);
     return map;
   };
-
   Map.addMarker = function(map, lat, lng, name, icon){
     var latLng = new $window.google.maps.LatLng(lat, lng);
     var marker = new $window.google.maps.Marker({
@@ -46,9 +45,5 @@ angular.module('poseidon')
     });
     return marker;
   };
-
-
-
-
   return Map;
 })

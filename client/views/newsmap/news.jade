@@ -1,7 +1,8 @@
 .row
+  h1: i(ng-if='loading').fa-spinner.fa-spin.fa-5x
   .col-xs-8.col-md-8
-    #mapDiv.responsive    
-  .col-xs-3.col-md-3.carousel
+    #mapDiv.responsive(ng-if='!loading')
+  .col-xs-3.col-md-3.carousel(ng-if='!loading')
     h3 Current Score:
     h4.score {{newPoints}}
     br

@@ -5,6 +5,7 @@ angular.module('poseidon')
   var markers = [];
   var user;
   $rootScope.i = 0;
+  $scope.doneLoading = true;
   $scope.isRead = true;
   $scope.isImage = true;
   $scope.newPoints = 0;
@@ -56,6 +57,7 @@ angular.module('poseidon')
       $scope.$apply(function(){
         $rootScope.articles = articles;
         $rootScope.article = $rootScope.articles[0];
+        $scope.doneLoading = true;
       });
     });
   });
