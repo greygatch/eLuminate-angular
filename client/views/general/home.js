@@ -2,7 +2,6 @@
 
 angular.module('poseidon')
 .controller('NewsCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map, User){
-  var locations = [];
   var markers = [];
   var user;
   $rootScope.i = 0;
@@ -27,13 +26,16 @@ angular.module('poseidon')
     user = response.data;
   });
 
-  Map.geocode('sevastopol, ukraine', function(){
+  Map.geocode('rome', function(){
     var map = Map.create('#mapDiv', 25, 0, 2);
     $window.jQuery.getJSON('http://api.nytimes.com/svc/topstories/v1/home.json?api-key=d9aaa709a92d3d4ad4efbd1902a469ac:19:72139126', function(response){
       var articles = response.results.filter(function(e){
         return e.geo_facet || e.subsection ? e : null;
       });
 
+
+
+      var locations = [];
       articles.forEach(function(e){
         if(!e.multimedia){
           e.multimedia = [];
@@ -74,7 +76,7 @@ angular.module('poseidon')
     delete user.__v;
     User.update(user)
     .then(function(response){
-
+      //
     });
   };
 
@@ -85,32 +87,10 @@ angular.module('poseidon')
       $rootScope.i -= 1;
     }
     $scope.article = $scope.articles[$rootScope.i];
-    console.log($scope.article);
     if(!($scope.article.multimedia[0])){
       $scope.isImage = false;
     }else{
       $scope.isImage = true;
     }
   };
-
-  $scope.changeMap = function(){
-    console.log($scope.article);
-    var mapChange;
-    if($scope.article.geo_facet[0]){
-      Map.geocode($scope.article.geo_facet[0], function(response){
-        var lat = response[0].geometry.location.A;
-        var lng = response[0].geometry.location.F;
-        mapChange = Map.create('#mapDiv', lat, lng, 6);
-      });
-    }else if($scope.article.subsection){
-      Map.geocode($scope.article.subsection, function(response){
-        if(!response){ return; }
-
-        var lat = response[0].geometry.location.A;
-        var lng = response[0].geometry.location.F;
-        mapChange = Map.create('#mapDiv', lat, lat, 6);
-      });
-    }
-
-  }
 });

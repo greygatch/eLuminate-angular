@@ -1,14 +1,16 @@
-.row
+.row.map-container
   h1: i(ng-if='loading').fa-spinner.fa-spin.fa-5x
+  .col-xs-3.col-md-3.carousel.pull-left(ng-if='!loading')
+    //- h3 Current Score:
+    //- h4.score {{newPoints}}
+    h3: a.link(target='_blank' ng-mousedown='isRead($event)' ng-href='{{article.url}}') {{article.title}}
+    img.previewImg(ng-show='isImage' ng-src='{{article.multimedia[0].url ? article.multimedia[4].url : dummyUrl}}')
+    h5 {{article.abstract}}
+    .row
+      i.navArrow.fa.fa-chevron-left.fa-5x.gallery(ng-click='move("prev")')
+      i.navArrow.fa.fa-chevron-right.fa-5x.gallery(ng-click='move("next")')
+      h6 {{i + 1}} out of {{articles.length}}
+      button.btn.btn-success(ng-click='changeMap()') Go!
   .col-xs-8.col-md-8
     #mapDiv.responsive(ng-if='!loading')
-  .col-xs-3.col-md-3.carousel(ng-if='!loading')
-    h3 Current Score:
-    h4.score {{newPoints}}
-    br
-    img.previewImg(ng-show='isImage' ng-src='{{article.multimedia[0].url ? article.multimedia[4].url : dummyUrl}}')
-    h3: a.link(target='_blank' ng-mousedown='isRead($event)' ng-href='{{article.url}}') {{article.title}}
-    h5 {{article.abstract}}
-    i.navArrow.fa.fa-chevron-left.fa-5x.gallery(ng-click='move("prev")')
-    i.navArrow.fa.fa-chevron-right.fa-5x.gallery(ng-click='move("next")')
-    h6 {{i + 1}} out of {{articles.length}} articles.
+  //- h1.pull-left New Points: {{newPoints}}
