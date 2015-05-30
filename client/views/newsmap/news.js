@@ -9,6 +9,7 @@ angular.module('poseidon')
   $scope.doneLoading = true;
   $scope.isRead = true;
   $scope.isImage = true;
+  $scope.isGeoLoc = false;
   $scope.newPoints = 0;
   $scope.dummyUrl = 'https://shafr.org/sites/default/files/field/image/T_logo.gif';
 
@@ -81,8 +82,10 @@ angular.module('poseidon')
   $scope.move = function(direction){
     if(direction === 'next' && $rootScope.i < $scope.articles.length - 1){
       $rootScope.i += 1;
+      $scope.isGeoLoc = $scope.article.geo_facet[0] ? true : false;
     }else if(direction === 'prev' && $rootScope.i > 0){
       $rootScope.i -= 1;
+      $scope.isGeoLoc = $scope.article.geo_facet[0] ? true : false;
     }
     $scope.article = $scope.articles[$rootScope.i];
     console.log($scope.article);
@@ -101,16 +104,8 @@ angular.module('poseidon')
         var lat = response[0].geometry.location.A;
         var lng = response[0].geometry.location.F;
         mapChange = Map.create('#mapDiv', lat, lng, 6);
-      });
-    }else if($scope.article.subsection){
-      Map.geocode($scope.article.subsection, function(response){
-        if(!response){ return; }
-
-        var lat = response[0].geometry.location.A;
-        var lng = response[0].geometry.location.F;
-        mapChange = Map.create('#mapDiv', lat, lat, 6);
+        Map.addMarker(mapChange, lat, lng, '!', '/assets/marker.png');
       });
     }
-
   }
 });

@@ -10,7 +10,7 @@
       i.navArrow.fa.fa-chevron-left.fa-5x.gallery(ng-click='move("prev")')
       i.navArrow.fa.fa-chevron-right.fa-5x.gallery(ng-click='move("next")')
       h6 {{i + 1}} out of {{articles.length}}
-      button.btn.btn-success(ng-click='changeMap()') Go!
-  .col-xs-8.col-md-8
+      button.btn.btn-success.btn-xs(ng-if='isGeoLoc' ng-click='changeMap()') Explore!
+  .col-xs-8.col-md-8show
     #mapDiv.responsive(ng-if='!loading')
   //- h1.pull-left New Points: {{newPoints}}
