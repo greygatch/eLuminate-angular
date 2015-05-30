@@ -36,7 +36,9 @@ angular.module('poseidon')
         if(e.geo_facet[0] === geoLoc || e.subsection === geoLoc){
           $rootScope.$apply(function(){
             $rootScope.article = e;
+            console.log(e);
             $rootScope.i = index;
+            $rootScope.isGeoLoc = e.geo_facet[0] ? true : false;
           });
         }
         index++;

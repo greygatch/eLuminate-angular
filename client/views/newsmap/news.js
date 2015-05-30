@@ -9,7 +9,7 @@ angular.module('poseidon')
   $scope.doneLoading = true;
   $scope.isRead = true;
   $scope.isImage = true;
-  $scope.isGeoLoc = false;
+  $rootScope.isGeoLoc = false;
   $scope.newPoints = 0;
   $scope.dummyUrl = 'https://shafr.org/sites/default/files/field/image/T_logo.gif';
 
@@ -41,14 +41,17 @@ angular.module('poseidon')
           e.multimedia[0] = {};
           e.multimedia[0].url = $scope.dummyUrl;
         }
-        locations.push(e.geo_facet[0] ? e.geo_facet[0] : e.subsection);
+        if(e.geo_facet){
+          locations.push(e.geo_facet[0]);
+        }
       });
-      var index;
+      // var index;
       locations.forEach(function(l){
         var lat;
         var lng;
         Map.geocode(l, function(result){
           if(!result){ return; }
+          console.log(result);
           lat = result[0].geometry.location.A;
           lng = result[0].geometry.location.F;
           Map.addMarker(map, lat, lng, l, '/assets/marker.png');
@@ -82,12 +85,11 @@ angular.module('poseidon')
   $scope.move = function(direction){
     if(direction === 'next' && $rootScope.i < $scope.articles.length - 1){
       $rootScope.i += 1;
-      $scope.isGeoLoc = $scope.article.geo_facet[0] ? true : false;
     }else if(direction === 'prev' && $rootScope.i > 0){
       $rootScope.i -= 1;
-      $scope.isGeoLoc = $scope.article.geo_facet[0] ? true : false;
     }
     $scope.article = $scope.articles[$rootScope.i];
+    $rootScope.isGeoLoc = $scope.article.geo_facet[0] ? true : false;
     console.log($scope.article);
     if(!($scope.article.multimedia[0])){
       $scope.isImage = false;
@@ -97,15 +99,24 @@ angular.module('poseidon')
   };
 
   $scope.changeMap = function(){
-    console.log($scope.article);
     var mapChange;
     if($scope.article.geo_facet[0]){
+      console.log($scope.articles)
+
       Map.geocode($scope.article.geo_facet[0], function(response){
         var lat = response[0].geometry.location.A;
         var lng = response[0].geometry.location.F;
         mapChange = Map.create('#mapDiv', lat, lng, 6);
-        Map.addMarker(mapChange, lat, lng, '!', '/assets/marker.png');
+        locations.forEach(function(l){
+          Map.geocode(l, function(result){
+            if(!result){ return; }
+            var lat = result[0].geometry.location.A;
+            var lng = result[0].geometry.location.F;
+            Map.addMarker(mapChange, lat, lng, l, '/assets/marker.png');
+          });
+        });
       });
+
     }
   }
 });
