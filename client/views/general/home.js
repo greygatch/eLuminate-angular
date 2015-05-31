@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('poseidon')
-.controller('NewsCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map, User){
+.controller('HomeCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map, User){
   var markers = [];
   var user;
   $rootScope.i = 0;
@@ -10,31 +10,21 @@ angular.module('poseidon')
   $scope.isImage = true;
   $scope.newPoints = 0;
   $scope.dummyUrl = 'https://shafr.org/sites/default/files/field/image/T_logo.gif';
-
+  //
   function clearMarkers(){
     markers.forEach(function(m){
       m.setMap(null);
     });
     markers = [];
   }
-
   clearMarkers();
-
-  User.find()
-  .then(function(response){
-    $rootScope.points = response.data.points;
-    user = response.data;
-  });
-
-  Map.geocode('rome', function(){
-    var map = Map.create('#mapDiv', 25, 0, 2);
+  //
+  Map.geocode('reykjavik', function(){
+    var map = Map.create('#mapDiv2', 25, 0, 2);
     $window.jQuery.getJSON('http://api.nytimes.com/svc/topstories/v1/home.json?api-key=d9aaa709a92d3d4ad4efbd1902a469ac:19:72139126', function(response){
       var articles = response.results.filter(function(e){
         return e.geo_facet || e.subsection ? e : null;
       });
-
-
-
       var locations = [];
       articles.forEach(function(e){
         if(!e.multimedia){
@@ -55,7 +45,7 @@ angular.module('poseidon')
           Map.addMarker(map, lat, lng, l, '/assets/marker.png');
         });
       });
-
+  //
       $scope.$apply(function(){
         $rootScope.articles = articles;
         $rootScope.article = $rootScope.articles[0];
@@ -63,7 +53,7 @@ angular.module('poseidon')
       });
     });
   });
-
+  //
   $rootScope.$watch('article', function(n){
     $scope.article = n;
   });
@@ -79,7 +69,7 @@ angular.module('poseidon')
       //
     });
   };
-
+  //
   $scope.move = function(direction){
     if(direction === 'next' && $rootScope.i < $scope.articles.length - 1){
       $rootScope.i += 1;

@@ -4,6 +4,8 @@ angular.module('poseidon')
 .controller('UsersCtrl', function($scope, $state, $window, User){
   $scope.name = $state.current.name;
 
+  $scope.isLogin = $scope.name === 'register' ? true : false;
+
   $scope.oauth = function(provider){
     User.oauth(provider);
   };

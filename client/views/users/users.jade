@@ -14,4 +14,5 @@ h3 {{name | uppercase}}
         button.btn.btn-primary(ng-click='oauth("twitter")'): i.fa.fa-twitter
         button.btn.btn-success(ng-click='oauth("google")'): i.fa.fa-google
         button.btn.btn-warning(ng-click='oauth("github")'): i.fa.fa-github
-  .col-xs-8
+  .col-xs-4.col-xs-offset-4
+    h6: a(ng-if='!isLogin' ui-sref='register') Need to register?

@@ -1,5 +1,5 @@
 angular.module('poseidon')
-.factory('Map', function($window, $rootScope){
+.factory('Map', function($window, $rootScope, $state){
   function Map(){}
 
   Map.geocode = function(address, cb){
@@ -30,6 +30,7 @@ angular.module('poseidon')
       icon: icon
     });
     google.maps.event.addListener(marker, 'click', function() {
+      if(!$rootScope.activeUser){ $state.go('login'); }
       var geoLoc = this.title;
       var index = 0;
       $rootScope.articles.forEach(function(e){

@@ -51,7 +51,6 @@ angular.module('poseidon')
         var lng;
         Map.geocode(l, function(result){
           if(!result){ return; }
-          console.log(result);
           lat = result[0].geometry.location.A;
           lng = result[0].geometry.location.F;
           Map.addMarker(map, lat, lng, l, '/assets/marker.png');
@@ -90,7 +89,6 @@ angular.module('poseidon')
     }
     $scope.article = $scope.articles[$rootScope.i];
     $rootScope.isGeoLoc = $scope.article.geo_facet[0] ? true : false;
-    console.log($scope.article);
     if(!($scope.article.multimedia[0])){
       $scope.isImage = false;
     }else{
@@ -101,8 +99,6 @@ angular.module('poseidon')
   $scope.changeMap = function(){
     var mapChange;
     if($scope.article.geo_facet[0]){
-      console.log($scope.articles)
-
       Map.geocode($scope.article.geo_facet[0], function(response){
         var lat = response[0].geometry.location.A;
         var lng = response[0].geometry.location.F;

@@ -5,7 +5,7 @@ angular.module('poseidon')
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  .state('home', {url: '/', templateUrl: '/views/general/home.html'})
+  .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
   .state('news', {url: '/news', templateUrl: '/views/newsmap/news.html', controller: 'NewsCtrl'})
   .state('profile', {url: '/profile', templateUrl: '/views/profile/profile.html', controller: 'ProfileCtrl'})
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
