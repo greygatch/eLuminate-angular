@@ -72,6 +72,10 @@ angular.module('poseidon')
     $scope.article = n;
   });
 
+  $scope.newPost = function(){
+    $state.go('forum.postEdit', {postTitle: $scope.article.title});
+  }
+
   $scope.isRead = function(event){
     var roll = Math.floor(Math.random() * 25) + 75;
     $rootScope.points += roll;
