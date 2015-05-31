@@ -45,15 +45,18 @@ angular.module('poseidon')
           locations.push(e.geo_facet[0]);
         }
       });
-      // var index;
       locations.forEach(function(l){
         var lat;
         var lng;
         Map.geocode(l, function(result){
-          if(!result){ return; }
-          lat = result[0].geometry.location.A;
-          lng = result[0].geometry.location.F;
-          Map.addMarker(map, lat, lng, l, '/assets/marker.png');
+          console.log('Marker ', locations.indexOf(l) + 1);
+          if(result){
+            $scope.$apply(function(){
+              lat = result[0].geometry.location.A;
+              lng = result[0].geometry.location.F;
+              Map.addMarker(map, lat, lng, l, '/assets/marker.png');
+            });
+          }
         });
       });
 
@@ -114,5 +117,14 @@ angular.module('poseidon')
       });
 
     }
+    var roll = Math.floor(Math.random() * 25) + 10;
+    $rootScope.points += roll;
+    $scope.newPoints += roll;
+    user.points = $rootScope.points;
+    delete user.__v;
+    User.update(user)
+    .then(function(response){
+
+    });
   }
 });
