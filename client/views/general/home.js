@@ -4,19 +4,25 @@ angular.module('poseidon')
 .controller('HomeCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map, User){
   var markers = [];
   var user;
-  $rootScope.i = 0;
-  $scope.doneLoading = true;
-  $scope.isRead = true;
+
   $scope.isImage = true;
-  $scope.newPoints = 0;
-  $scope.dummyUrl = 'https://shafr.org/sites/default/files/field/image/T_logo.gif';
-  //
+
   function clearMarkers(){
     markers.forEach(function(m){
       m.setMap(null);
     });
     markers = [];
   }
+  $scope.checkUserStatus = function(){
+    console.log('test');
+    var newUser = $rootScope.activeUser ? true : false;
+    if(newUser){
+      $state.go('news');
+    }else{
+      $state.go('login');
+    }
+  };
+
   clearMarkers();
   //
   Map.geocode('reykjavik', function(){
