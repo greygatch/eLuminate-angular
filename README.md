@@ -7,7 +7,7 @@
 [![Coverage Status](https://coveralls.io/repos/greygatch/eLuminate-node/badge.svg)](https://coveralls.io/r/greygatch/eLuminate-node)
 #### Technologies
 [![Bower](https://img.shields.io/bower/v/bootstrap.svg)]()
-- MongoDB
-- Mongoose
-- Hapi
-- Sinon
+- AngularJS
+- jQuery
+- Firebase
+- Jade/LESS
