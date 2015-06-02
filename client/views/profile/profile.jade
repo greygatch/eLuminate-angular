@@ -4,7 +4,10 @@
     h4 {{user.username ? user.username : user.firebaseId}}
     h4.nav-score Joined: {{user.createdAt | date: med}}
     h4.nav-score Points: {{user.points}}
-    h4.nav-score Badges: 0
+    h4.nav-score Badges:
+    ul(ng-repeat='badge in badges track by $index')
+      li: img.badge-logo(ng-src='{{badge.image}}')
+      li {{badge.description}}
   .col-xs-2
     br
     form

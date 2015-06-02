@@ -8,6 +8,8 @@ angular.module('poseidon')
   User.find()
   .then(function(response){
     $scope.user = response.data;
+    $scope.badges = $scope.user.badges;
+    
     UID = response.data._id;
     Post.find()
     .then(function(response2){

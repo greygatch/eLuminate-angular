@@ -9,7 +9,7 @@
   "dependencies": {
     "lodash": "~3.9.3",
     "font-awesome": "~4.3.0",
-    "firebase": "~2.2.5",
+    "firebase": "~2.2.6",
     "angular": "~1.4.0",
     "angularfire": "~1.1.1",
     "jquery": "~2.1.4",

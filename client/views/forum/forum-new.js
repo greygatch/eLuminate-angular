@@ -4,9 +4,10 @@ angular.module('poseidon')
 .controller('ForumNewCtrl', function($rootScope, $window, $scope, $state, $firebaseObject, $http, User, Post){
   var user;
   $scope.isEdit = false;
+
   if($state.params.postTitle){
     $scope.post = {};
-    $scope.post.title = 'RE:' + $state.params.postTitle;
+    $scope.post.title = 'RE: ' + $state.params.postTitle;
   }
   if($state.params.postId){
     $scope.isEdit = true;
