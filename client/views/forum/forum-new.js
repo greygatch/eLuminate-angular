@@ -18,6 +18,7 @@ angular.module('poseidon')
   }
 
   $scope.createPost = function(post){
+    console.log('!!!!!!!!!!!!', post);
     post.id = $rootScope.activeUser.uid;
     Post.create(post)
     .then(function(){

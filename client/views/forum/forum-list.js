@@ -20,14 +20,21 @@ angular.module('poseidon')
   }
 
   $scope.upvote = function(post){
-    post.votes += 1;
-    Post.edit(post)
-    .then(function(response){
-      Post.find()
+    console.log(post);
+    console.log(post.comments);
+
+    if(post.usersVoted.indexOf(UID) === -1){
+      post.usersVoted.push(UID);
+      post.votes += 1;
+      Post.edit(post)
       .then(function(response){
-        $scope.posts = response.data;
+        Post.find()
+        .then(function(response){
+          $scope.posts = response.data;
+        });
       });
-    });
+    }
+
   }
 
   $scope.editPost = function(post){
