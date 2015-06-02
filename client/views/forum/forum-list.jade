@@ -5,7 +5,14 @@
     br
     button.btn.btn-default(ui-sref='forum.new') Create Post
     br
-    br  
+.row
+  .col-xs-2.col-xs-offset-2
+    h5.center-block.top-ten Today's Top 10
+    ul.news-brief(ng-repeat='article in articles')
+      li {{article.title}}
+    br
+  .col-xs-6
+    br
     table.table.table-striped
       tbody
         tr(ng-repeat='post in posts | orderBy: "-createdAt"')

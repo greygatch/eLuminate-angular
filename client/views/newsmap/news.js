@@ -67,7 +67,6 @@ angular.module('poseidon')
       $scope.$apply(function(){
         $rootScope.articles = articles;
         $rootScope.article = $rootScope.articles[0];
-        $scope.doneLoading = true;
       });
     });
   });

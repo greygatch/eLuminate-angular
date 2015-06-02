@@ -40,13 +40,13 @@ angular.module('poseidon')
       });
     }else if(user.points > 10000 && user.badges.length === 3){
       user.badges.push({
-        image: '../assets/badge_four.png',
+        image: '../assets/badge_five.png',
         description: 'In-the-know',
         isAchieved: true
       });
     }else if(user.points > 100000 && user.badges.length === 4){
       user.badges.push({
-        image: '../assets/badge_five.png',
+        image: '../assets/badge_four.png',
         description: 'eLuminated',
         isAchieved: true
       });
