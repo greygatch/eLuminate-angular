@@ -9,7 +9,8 @@ angular.module('poseidon')
   .then(function(response){
     $scope.user = response.data;
     $scope.badges = $scope.user.badges;
-    
+    $scope.hasProfile = $scope.user.avatar ? true : false;
+
     UID = response.data._id;
     Post.find()
     .then(function(response2){
@@ -28,6 +29,7 @@ angular.module('poseidon')
     User.update($scope.user)
     .then(function(reply){
       $scope.user = reply.data;
+      $scope.hasProfile = $scope.user.avatar ? true : false;
       $window.swal({title: 'Success!', text: 'Your profile has been updated!', type: 'success'});
     });
   };

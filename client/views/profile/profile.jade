@@ -1,6 +1,6 @@
 .row
   .col-xs-6.col-xs-offset-3
-    img.profileImg(ng-if='{{user.avatar}}' ng-src='{{user.avatar}}')
+    img.profileImg(ng-if='hasProfile' ng-src='{{user.avatar}}')
     h4 {{user.username ? user.username : user.firebaseId}}
     h4.nav-score Joined: {{user.createdAt | date: med}}
     h4.nav-score Points: {{user.points}}

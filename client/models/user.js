@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('poseidon')
-.factory('User', function($rootScope, $http, nodeUrl){
+.factory('User', function($rootScope, $http, nodeUrl, $window){
   function User(){
   }
 
@@ -18,6 +18,8 @@ angular.module('poseidon')
   };
 
   User.update = function(user){
+    var badgeCount = user.badges.length;
+
     if(user.points > 100 && user.badges.length === 0){
       user.badges.push({
         image: '../assets/badge_one.png',
@@ -49,6 +51,10 @@ angular.module('poseidon')
         isAchieved: true
       });
     }
+    if(badgeCount !== user.badges.length){
+      $window.swal({title: 'New Badge!', text: 'You just unlocked a new badge!!', type: 'success'});
+    }
+
     return $http.put(nodeUrl + '/users/' + user._id + '/edit', user);
   };
 
