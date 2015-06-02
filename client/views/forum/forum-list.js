@@ -17,12 +17,9 @@ angular.module('poseidon')
 
   $scope.isUserPost = function(post){
     return post.userId === UID;
-  }
+  };
 
   $scope.upvote = function(post){
-    console.log(post);
-    console.log(post.comments);
-
     if(post.usersVoted.indexOf(UID) === -1){
       post.usersVoted.push(UID);
       post.votes += 1;
@@ -34,8 +31,7 @@ angular.module('poseidon')
         });
       });
     }
-
-  }
+  };
 
   $scope.editPost = function(post){
     $state.go('forum.edit', {postId: post._id});
@@ -50,5 +46,4 @@ angular.module('poseidon')
       });
     });
   };
-
 });

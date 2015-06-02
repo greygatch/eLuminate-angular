@@ -3,7 +3,13 @@
 angular.module('poseidon')
 .controller('ForumNewCtrl', function($rootScope, $window, $scope, $state, $firebaseObject, $http, User, Post){
   var user;
+  var UID;
   $scope.isEdit = false;
+
+  User.find()
+  .then(function(response){
+    UID = response.data._id;
+  });
 
   if($state.params.postTitle){
     $scope.post = {};
@@ -18,8 +24,9 @@ angular.module('poseidon')
   }
 
   $scope.createPost = function(post){
-    console.log('!!!!!!!!!!!!', post);
     post.id = $rootScope.activeUser.uid;
+    post.usersVoted = [];
+    post.usersVoted.push(UID);
     Post.create(post)
     .then(function(){
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
@@ -44,7 +51,6 @@ angular.module('poseidon')
       });
     });
   };
-
   function postingPoints(){
     User.find()
     .then(function(response){

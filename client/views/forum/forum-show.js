@@ -2,16 +2,23 @@
 
 angular.module('poseidon')
 .controller('ForumShowCtrl', function($rootScope, $scope, $state, $window, $http, Post, User){
+  var UID;
 
   Post.findOne($state.params.postId)
   .then(function(response){
     $scope.post = response.data;
   });
 
+  User.find()
+  .then(function(response){
+    UID = response.data._id;
+  });
+
   $scope.addComment = function(body){
     var comment = {};
     comment.body = body;
     comment.userId = $scope.post._id;
+    comment.usersVoted = UID;
     var post = $scope.post;
     post.comments.push(comment);
 
@@ -24,14 +31,17 @@ angular.module('poseidon')
     });
   };
   $scope.upvote = function(comment, post){
-    comment.votes += 1;
-    Post.edit(post)
-    .then(function(response){
-      Post.find()
+    if(comment.usersVoted.indexOf(UID) === -1){
+      comment.usersVoted.push(UID);
+      comment.votes += 1;
+      Post.edit(post)
       .then(function(response){
-        $scope.posts = response.data;
+        Post.find()
+        .then(function(response){
+          $scope.posts = response.data;
+        });
       });
-    });
+    }
   };
   function commentPoints(){
     User.find()
