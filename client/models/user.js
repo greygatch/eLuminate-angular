@@ -21,7 +21,7 @@ angular.module('poseidon')
     if(user.points > 100 && user.badges.length === 0){
       user.badges.push({
         image: '../assets/badge_one.png',
-        description: 'Your first steps to becoming informed.',
+        description: 'Rookie',
         isAchieved: true
       });
     }else if(user.points > 1000 && user.badges.length === 1){
@@ -49,7 +49,6 @@ angular.module('poseidon')
         isAchieved: true
       });
     }
-    console.log(user);
     return $http.put(nodeUrl + '/users/' + user._id + '/edit', user);
   };
 

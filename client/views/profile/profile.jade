@@ -1,15 +1,11 @@
 .row
-  .col-xs-2.col-xs-offset-4
-    img.profileImg(ng-src='{{user.avatar}}')
+  .col-xs-6.col-xs-offset-3
+    img.profileImg(ng-if='{{user.avatar}}' ng-src='{{user.avatar}}')
     h4 {{user.username ? user.username : user.firebaseId}}
     h4.nav-score Joined: {{user.createdAt | date: med}}
     h4.nav-score Points: {{user.points}}
-    h4.nav-score Badges:
-    ul(ng-repeat='badge in badges track by $index')
-      li: img.badge-logo(ng-src='{{badge.image}}')
-      li {{badge.description}}
-  .col-xs-2
-    br
+.row
+  .col-xs-4.col-xs-offset-4
     form
       br
       .form-group
@@ -20,6 +16,13 @@
         input.form-control(type='text' placeholder='avatar URL' ng-model='profile.avatar')
         br
         button.btn.btn-default(ng-click='updateProfile(profile)') Update Profile
+.row
+  .col-xs-2.col-xs-offset-5
+    h4.nav-score Badges:
+    ul.badge-list(ng-repeat='badge in badges track by $index')
+      li: img.badge-logo(ng-src='{{badge.image}}')
+      li {{badge.description}}
+
 .row
   .col-xs-4.col-xs-offset-4
     h4 Posts:
