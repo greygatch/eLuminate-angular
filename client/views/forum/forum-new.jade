@@ -2,11 +2,9 @@
   .col-xs-4.col-xs-offset-4
     h4 Rules: Please do not use profanity or harass other users.
     form
-      .form-group
-        label Title
+      .form-group.composition
         input.form-control(type='text', placeholder='Enter a title', ng-model='post.title')
         br
-        label Post Body
         textarea.form-control(rows='10', placeholder='Enter content', ng-model='post.body')
         br
         button.btn.btn-primary.btn-lg(ng-if='!isEdit' ng-click='createPost(post)') Submit Post

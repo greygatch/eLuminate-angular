@@ -1,1 +1,17 @@
 h1 Leaderboard
+.row
+  .col-xs-8.col-xs-offset-2
+    //- ul.user-card(ng-repeat='user in users | orderBy: "-points" track by $index')
+    //-   li {{$index + 1}}
+    //-   li {{user.username}}
+    //-   li: img.leader-image(ng-src='{{user.avatar}}')
+    //-   li Points: {{user.points}}
+    //-   li Badges: {{user.badges.length}}
+    table.table
+      tbody
+        tr.user-card(ng-repeat='user in users | orderBy: "-points" track by $index')
+          td {{$index + 1}}
+          td {{user.username}}
+          td: img.leader-image(ng-src='{{user.avatar}}')
+          td Points: {{user.points}}
+          td Badges: {{user.badges.length}}

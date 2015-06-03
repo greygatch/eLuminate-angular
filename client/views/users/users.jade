@@ -10,18 +10,10 @@ h3 {{name | uppercase}}
         label(for='password') Password
         input.form-control#password(type='password', name='password', ng-model='user.password')
       .form-group
-        button.btn.btn-default(ng-click='submit(user)') Email
+        button.btn.btn-default(ng-click='submit(user)') {{name | uppercase}}
         button.btn.btn-primary(ng-click='oauth("twitter")'): i.fa.fa-twitter
         button.btn.btn-success(ng-click='oauth("google")'): i.fa.fa-google
         button.btn.btn-warning(ng-click='oauth("github")'): i.fa.fa-github
-  .col-xs-4.col-xs-offset-4
+.row
+  .col
     h5: a(ng-if='!isLogin' ui-sref='register') Need to register?
-    h4.text-warning: u Rules
-    h5.text-primary Points for Reading an Article:
-    h5.text-success 75-100
-    h5.text-primary Points for Creating a Post:
-    h5.text-success 25-50
-    h5.text-primary Points for Exploring a Region:
-    h5.text-success 10-35
-    h5.text-primary Points for Commenting on a Post:
-    h5.text-success 1-25

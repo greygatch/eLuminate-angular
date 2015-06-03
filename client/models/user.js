@@ -18,7 +18,7 @@ angular.module('poseidon')
   };
 
   User.findAll = function(){
-    return $http.get(nodeUrl + '/users');
+    return $http.get(nodeUrl + '/leaderboard');
   }
 
   User.update = function(user){
