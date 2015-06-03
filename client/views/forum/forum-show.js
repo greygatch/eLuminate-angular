@@ -48,7 +48,7 @@ angular.module('poseidon')
     .then(function(response){
       $rootScope.points = response.data.points;
       var user = response.data;
-      var roll = Math.floor(Math.random() * 25) + 25;
+      var roll = Math.floor(Math.random() * 25) + 1;
       $rootScope.points += roll;
       $scope.newPoints += roll;
       user.points = $rootScope.points;

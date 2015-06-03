@@ -17,7 +17,7 @@
         br
         button.btn.btn-default(ng-click='updateProfile(profile)') Update Profile
 .row
-  .col-xs-2.col-xs-offset-5
+  .col-xs-8.col-xs-offset-2
     h4.nav-score Badges:
     ul.badge-list(ng-repeat='badge in badges track by $index')
       li: img.badge-logo(ng-src='{{badge.image}}')

@@ -11,6 +11,7 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
       ul.nav.navbar-nav.navbar-right(ng-show='activeUser')
         li: a(ui-sref='news'): i.fa.fa-globe &nbsp; NewsMap &nbsp;
         li: a(ui-sref='forum.list'): i.fa.fa.fa-newspaper-o &nbsp; Forum &nbsp;
+        li: a(ui-sref='leaderboard'): i.fa.fa.fa-list &nbsp; Leaderboard &nbsp;
         li: a(ui-sref='profile'): i.nav-score.fa.fa-rocket.fa-sm &nbsp; {{points}} &nbsp;
         li: button.btn.btn-link.btn-lg(ng-click='logout()'): i.fa.fa-sign-out &nbsp;
       ul.nav.navbar-nav.navbar-right(ng-hide='activeUser')

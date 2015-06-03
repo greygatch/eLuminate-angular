@@ -6,6 +6,8 @@ angular.module('poseidon')
 
   $stateProvider
   .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
+  .state('leaderboard', {url: '/leaderboard', templateUrl: '/views/general/leaderboard.html', controller: 'LeaderboardCtrl'})
+  .state('about', {url: '/about', templateUrl: '/views/general/about.html'})
   .state('news', {url: '/news', templateUrl: '/views/newsmap/news.html', controller: 'NewsCtrl'})
   .state('profile', {url: '/profile', templateUrl: '/views/profile/profile.html', controller: 'ProfileCtrl'})
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})

@@ -130,5 +130,5 @@ angular.module('poseidon')
     user.points = $rootScope.points;
     delete user.__v;
     User.update(user);
-  }
+  };
 });

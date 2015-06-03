@@ -17,6 +17,10 @@ angular.module('poseidon')
     return $http.get(nodeUrl + '/users/' + $rootScope.activeUser.uid);
   };
 
+  User.findAll = function(){
+    return $http.get(nodeUrl + '/users');
+  }
+
   User.update = function(user){
     var badgeCount = user.badges.length;
 
