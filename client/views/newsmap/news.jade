@@ -13,8 +13,10 @@
       h6 {{i + 1}} out of {{articles.length}}
       button.btn.btn-primary(ng-click='newPost()') Post About It
       button.btn.btn-success(ng-if='article.geo_facet[0]' ng-click='changeMap()') Zoom
-  .col-xs-8.col-md-8show
+  .col-xs-8.col-md-8
     #mapDiv.responsive(ng-if='!loading')
+  .col-xs-4.col-xs-offset-4
+    i.fa.fa-arrow-down.center-block.fa-3x
 .row.rules
   .col-xs-4.col-xs-offset-4
     h4.text-warning: u Rules

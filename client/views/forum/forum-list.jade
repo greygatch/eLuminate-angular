@@ -18,6 +18,7 @@
           td {{post.createdAt | date: sm}}
           td: button.btn.btn-xs.btn-warning(ng-if='isUserPost(post)' ng-click='editPost(post)') Edit
           td: button.btn.btn-xs.btn-danger(ng-if='isUserPost(post)' ng-click='deletePost(post)') Delete
+
   .col-xs-2
     h5.text-center.top-ten: u Today's Top News
     ul.news-brief(ng-repeat='article in articles track by $index')
