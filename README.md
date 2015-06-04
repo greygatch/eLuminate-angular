@@ -1,5 +1,5 @@
 # eLuminate
-
+### A game that rewards you for informing yourself.
 ## FRONT-END
 
 ## Testing
