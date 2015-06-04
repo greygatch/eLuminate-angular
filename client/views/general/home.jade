@@ -1,10 +1,12 @@
-.container
+.container.splashpage
   .row
-    .col-xs-8.col-xs-offset-2
-      
-      h2: i.fa.fa-lightbulb-o.fa-2x
-      h3.quote Welcome to eLuminate! A game-based app that rewards you for informing yourself of current events.
-      #mapDiv2.responsive
+    .col-xs-10.col-xs-offset-1
       br
-      button(ng-click='checkUserStatus()').btn.btn-success.btn-lg Play Now
+      br
+      h2: i.fa.fa-lightbulb-o.fa-2x eLuminate
+      br
+      h3.quote: b A game that rewards you for informing yourself.
+      //- #mapDiv2.responsive
       h4 "An educated citizenry is a vital requisite for our survival as a free people." - Thomas Jefferson
+      br
+      button(ng-click='checkUserStatus()').btn.btn-success.btn-lg.play Play Now

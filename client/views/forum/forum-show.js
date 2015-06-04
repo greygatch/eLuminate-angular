@@ -4,6 +4,23 @@ angular.module('poseidon')
 .controller('ForumShowCtrl', function($rootScope, $scope, $state, $window, $http, Post, User){
   var UID;
 
+  function commentPoints(){
+    User.find()
+    .then(function(response){
+      $rootScope.points = response.data.points;
+      var user = response.data;
+      var roll = Math.floor(Math.random() * 25) + 1;
+      $rootScope.points += roll;
+      $scope.newPoints += roll;
+      user.points = $rootScope.points;
+      delete user.__v;
+      User.update(user)
+      .then(function(){
+        console.log('successful save');
+      });
+    });
+  }
+
   Post.findOne($state.params.postId)
   .then(function(response){
     $scope.post = response.data;
@@ -35,7 +52,7 @@ angular.module('poseidon')
       comment.usersVoted.push(UID);
       comment.votes += 1;
       Post.edit(post)
-      .then(function(response){
+      .then(function(){
         Post.find()
         .then(function(response){
           $scope.posts = response.data;
@@ -43,20 +60,4 @@ angular.module('poseidon')
       });
     }
   };
-  function commentPoints(){
-    User.find()
-    .then(function(response){
-      $rootScope.points = response.data.points;
-      var user = response.data;
-      var roll = Math.floor(Math.random() * 25) + 1;
-      $rootScope.points += roll;
-      $scope.newPoints += roll;
-      user.points = $rootScope.points;
-      delete user.__v;
-      User.update(user)
-      .then(function(response){
-        console.log('successful save: ', response);
-      });
-    });
-  }
 });

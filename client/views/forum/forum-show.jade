@@ -1,20 +1,19 @@
 .row
   .col-xs-2.col-xs-offset-5
-    buton.btn(ui-sref='forum.list') Back to Forum
-br
-.row
-  .col-xs-2.col-xs-offset-5
-    h3.post-title {{post.title}}
-    h6 Votes: {{post.votes}}
-    h6 Comments: {{post.comments.length}}
-br
-.row
-  .col-xs-4.col-xs-offset-4.post-body
-    p {{post.body}}
+    buton.btn.btn-default(ui-sref='forum.list') Back to Forum
 br
 .row
   .col-xs-4.col-xs-offset-4
-    table.table.table-bordered.table-hover
+    h2.post-title {{post.title}}
+    h5 Votes: {{post.votes}}
+    h5 Comments: {{post.comments.length}}
+.row
+  .col-xs-6.col-xs-offset-3.post-body
+    p {{post.body}}
+.row
+  .col-xs-4.col-xs-offset-4
+    br
+    table.table.table-bordered.forum-post
       thead
         tr.comment(ng-repeat='comment in post.comments')
           td {{comment.body}}
@@ -22,6 +21,6 @@ br
 br
 .row
   .col-xs-2.col-xs-offset-5
-    textarea.form-control(rows='5' ng-model='body')
-    br
+    form.form-group
+      textarea.form-control.add-comment(rows='5' ng-model='body')
     button.btn.btn-warning(ng-click='addComment(body)') Add Comment

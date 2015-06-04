@@ -5,16 +5,16 @@
     //- h4.score {{newPoints}}
     h3: a.link(target='_blank' ng-mousedown='isRead($event)' ng-href='{{article.url}}') {{article.title}}
     img.previewImg(ng-show='isImage' ng-src='{{article.multimedia[0].url ? article.multimedia[4].url : dummyUrl}}')
-    h4.nav-score {{article.abstract}}
+    h4.nav-score: b {{article.abstract}}
     .row
       i.navArrow.fa.fa-chevron-left.fa-4x.gallery(ng-click='move("prev")')
       i.navArrow.fa.fa-chevron-right.fa-4x.gallery(ng-click='move("next")')
       h6 {{i + 1}} out of {{articles.length}}
-      button.btn.btn-xs.btn-default(ng-click='newPost()') Post About It
-      button.btn.btn-success.btn-xs(ng-if='isGeoLoc' ng-click='changeMap()') Explore!
+      button.btn.btn-primary(ng-click='newPost()') Post About It
+      button.btn.btn-success(ng-if='isGeoLoc' ng-click='changeMap()') Zoom
   .col-xs-8.col-md-8show
     #mapDiv.responsive(ng-if='!loading')
-.row
+.row.rules
   .col-xs-4.col-xs-offset-4
     h4.text-warning: u Rules
     h5.text-primary Points for Reading an Article:

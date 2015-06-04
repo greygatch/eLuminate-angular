@@ -20,7 +20,7 @@ angular.module('poseidon')
     var articles = response.results.filter(function(e){
       return e.geo_facet || e.subsection ? e : null;
     });
-    articles = articles.splice(0,9);
+    articles = articles.splice(0, 9);
     $scope.$apply(function(){
       $rootScope.articles = articles;
     });
@@ -35,7 +35,7 @@ angular.module('poseidon')
       post.usersVoted.push(UID);
       post.votes += 1;
       Post.edit(post)
-      .then(function(response){
+      .then(function(){
         Post.find()
         .then(function(response){
           $scope.posts = response.data;
@@ -50,7 +50,7 @@ angular.module('poseidon')
 
   $scope.deletePost = function(post){
     Post.destroy(post)
-    .then(function(response){
+    .then(function(){
       Post.find()
       .then(function(response){
         $scope.posts = response.data;

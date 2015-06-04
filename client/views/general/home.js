@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('poseidon')
-.controller('HomeCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map, User){
+.controller('HomeCtrl', function($rootScope, $scope, $state, $window, $firebaseObject, $http, Map){
   var markers = [];
-  var user;
 
   $scope.isImage = true;
 
@@ -13,7 +12,8 @@ angular.module('poseidon')
     });
     markers = [];
   }
-  
+
+  console.log('test', $scope.activeUser)
   clearMarkers();
 
   $scope.checkUserStatus = function(){

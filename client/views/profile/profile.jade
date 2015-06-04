@@ -18,14 +18,14 @@
         button.btn.btn-default(ng-click='updateProfile(profile)') Update Profile
 .row
   .col-xs-8.col-xs-offset-2
-    h4.nav-score Badges:
+    h3.nav-score Badges:
     ul.badge-list(ng-repeat='badge in badges track by $index')
       li: img.badge-logo(ng-src='{{badge.image}}')
       li {{badge.description}}
 
 .row
-  .col-xs-4.col-xs-offset-4
-    h4 Posts:
+  .col-xs-6.col-xs-offset-3
+    h3 Posts:
     table.table.table-striped
       tbody
         tr(ng-repeat='post in posts | orderBy: "-createdAt"')

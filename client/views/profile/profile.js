@@ -38,7 +38,7 @@ angular.module('poseidon')
   };
   $scope.deletePost = function(post){
     Post.destroy(post)
-    .then(function(response){
+    .then(function(){
       Post.find()
       .then(function(response3){
         posts = response3.data;

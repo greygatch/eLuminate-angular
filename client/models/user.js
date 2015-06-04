@@ -19,7 +19,7 @@ angular.module('poseidon')
 
   User.findAll = function(){
     return $http.get(nodeUrl + '/leaderboard');
-  }
+  };
 
   User.update = function(user){
     var badgeCount = user.badges.length;

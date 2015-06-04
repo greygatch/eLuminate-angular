@@ -6,6 +6,23 @@ angular.module('poseidon')
   var UID;
   $scope.isEdit = false;
 
+  function postingPoints(){
+    User.find()
+    .then(function(response){
+      $rootScope.points = response.data.points;
+      user = response.data;
+      var roll = Math.floor(Math.random() * 25) + 25;
+      $rootScope.points += roll;
+      $scope.newPoints += roll;
+      user.points = $rootScope.points;
+      delete user.__v;
+      User.update(user)
+      .then(function(){
+        console.log('successful save');
+      });
+    });
+  }
+
   User.find()
   .then(function(response){
     UID = response.data._id;
@@ -20,7 +37,7 @@ angular.module('poseidon')
     Post.findOne($state.params.postId)
     .then(function(response){
       $scope.post = response.data;
-    })
+    });
   }
 
   $scope.createPost = function(post){
@@ -41,7 +58,7 @@ angular.module('poseidon')
   };
   $scope.editPost = function(post){
     Post.edit(post)
-    .then(function(response){
+    .then(function(){
       $window.swal({title: 'Success!', text: 'Your post was successful!', type: 'success'});
       Post.find()
       .then(function(response){
@@ -51,20 +68,4 @@ angular.module('poseidon')
       });
     });
   };
-  function postingPoints(){
-    User.find()
-    .then(function(response){
-      $rootScope.points = response.data.points;
-      user = response.data;
-      var roll = Math.floor(Math.random() * 25) + 25;
-      $rootScope.points += roll;
-      $scope.newPoints += roll;
-      user.points = $rootScope.points;
-      delete user.__v;
-      User.update(user)
-      .then(function(response){
-        console.log('successful save: ', response);
-      });
-    });
-  }
 });

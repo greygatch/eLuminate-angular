@@ -29,11 +29,8 @@ angular.module('poseidon')
     $rootScope.points = response.data.points;
     user = response.data;
   });
-
-
-
   Map.geocode('sevastopol, ukraine', function(){
-    console.log('map creation')
+    console.log('map creation');
     var map = Map.create('#mapDiv', 25, 0, 2);
     $window.jQuery.getJSON('http://api.nytimes.com/svc/topstories/v1/home.json?api-key=d9aaa709a92d3d4ad4efbd1902a469ac:19:72139126', function(response){
       var articles = response.results.filter(function(e){
@@ -52,7 +49,6 @@ angular.module('poseidon')
       });
       locations.forEach(function(l){
         Map.geocode(l, function(result){
-          console.log('lkgfdlfs', result)
           if(result){
             $scope.$apply(function(){
               var lat = result[0].geometry.location.A;
@@ -77,16 +73,16 @@ angular.module('poseidon')
 
   $scope.newPost = function(){
     $state.go('forum.postEdit', {postTitle: $scope.article.title});
-  }
+  };
 
-  $scope.isRead = function(event){
+  $scope.isRead = function(){
     var roll = Math.floor(Math.random() * 25) + 75;
     $rootScope.points += roll;
     $scope.newPoints += roll;
     user.points = $rootScope.points;
     delete user.__v;
     User.update(user)
-    .then(function(response){
+    .then(function(){
 
     });
   };
@@ -122,7 +118,6 @@ angular.module('poseidon')
           });
         });
       });
-
     }
     var roll = Math.floor(Math.random() * 25) + 10;
     $rootScope.points += roll;
