@@ -9,7 +9,7 @@
     "browser-sync": "^2.7.6",
     "concurrent-transform": "^1.0.0",
     "gulp": "^3.9.0",
-    "gulp-awspublish": "^2.0.2",
+    "gulp-awspublish": "1.0.6",
     "gulp-bower": "0.0.10",
     "gulp-concat": "^2.5.2",
     "gulp-copy": "0.0.2",
