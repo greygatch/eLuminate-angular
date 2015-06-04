@@ -3,7 +3,6 @@ angular.module('poseidon')
   function Map(){}
 
   Map.geocode = function(address, cb){
-    console.log('address: ', address);
     var geocoder = new $window.google.maps.Geocoder();
     geocoder.geocode({address: address}, cb);
   };
@@ -37,7 +36,6 @@ angular.module('poseidon')
         if(e.geo_facet[0] === geoLoc || e.subsection === geoLoc){
           $rootScope.$apply(function(){
             $rootScope.article = e;
-            console.log(e);
             $rootScope.i = index;
             $rootScope.isGeoLoc = e.geo_facet[0] ? true : false;
           });

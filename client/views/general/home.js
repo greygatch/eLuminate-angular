@@ -13,7 +13,6 @@ angular.module('poseidon')
     markers = [];
   }
 
-  console.log('test', $scope.activeUser)
   clearMarkers();
 
   $scope.checkUserStatus = function(){
