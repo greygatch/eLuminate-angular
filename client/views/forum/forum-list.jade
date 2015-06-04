@@ -1,6 +1,6 @@
 .row
   .col-xs-6.col-xs-offset-3
-    h3 Welcome to the eLuminate Forum
+    h2 Welcome to the eLuminate Forum
     h4 Please be respectful to others.
     br
     button.btn.btn-success(ui-sref='forum.new') Create Post
@@ -19,6 +19,6 @@
           td: button.btn.btn-xs.btn-warning(ng-if='isUserPost(post)' ng-click='editPost(post)') Edit
           td: button.btn.btn-xs.btn-danger(ng-if='isUserPost(post)' ng-click='deletePost(post)') Delete
   .col-xs-2
-    h5.text-center.top-ten: u Today's Top 10
-    ul.news-brief(ng-repeat='article in articles')
-      li: a(target='_blank' ng-href='{{article.url}}') {{article.title}}
+    h5.text-center.top-ten: u Today's Top News
+    ul.news-brief(ng-repeat='article in articles track by $index')
+      li: a(target='_blank' ng-href='{{article.url}}') {{$index + 1}}) {{article.title}}

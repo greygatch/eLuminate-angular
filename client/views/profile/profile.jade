@@ -23,7 +23,7 @@
       li: img.badge-logo(ng-src='{{badge.image}}')
       li {{badge.description}}
 
-.row
+.row(ng-if='hasPosts')
   .col-xs-6.col-xs-offset-3
     h3 Posts:
     table.table.table-striped

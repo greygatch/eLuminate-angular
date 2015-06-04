@@ -4,6 +4,7 @@ angular.module('poseidon')
 .controller('ProfileCtrl', function($scope, $state, $window, User, Post){
   var posts;
   var UID;
+  $scope.hasPosts = false;
 
   User.find()
   .then(function(response){
@@ -19,6 +20,7 @@ angular.module('poseidon')
         return e.userId === UID;
       });
       $scope.posts = posts;
+      $scope.hasPosts = $scope.posts.length > 0 ? true : false;
     });
   });
 
