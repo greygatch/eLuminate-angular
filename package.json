@@ -1,8 +1,6 @@
 {
   "name": "poseidon",
   "version": "0.0.1",
-  "homepage": "https://github.com/coding-house-apr2015/poseidon",
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
   "license": "BSD",
   "devDependencies": {
     "bower": "^1.4.1",
